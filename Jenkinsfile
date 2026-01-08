@@ -1,20 +1,15 @@
 pipeline {
     agent any
+
     stages {
-        stage('Start') {
-            steps {
-                echo 'Starting new project build'
-                bat 'mkdir output'
-            }
-        }
         stage('Build') {
             steps {
-                bat 'echo Build task running > output/build.txt'
-            }
-        }
-        stage('Finish') {
-            steps {
-                echo 'Build completed successfully'
+                bat '''
+                echo BUILD START
+                mkdir output
+                echo Build successful from Jenkins > output\\result.txt
+                echo %DATE% %TIME%
+                '''
             }
         }
     }
